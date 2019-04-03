@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+main {
+    display:flex;
+    padding-left: 12.5px;
+    padding-right: 12.5px;
+}
+main div {
+    margin-left: 12.5px;
+    margin-right: 12.5px;
+}
+main div ul {
+    list-style-type: none;
+    padding: 0;
+}
+main div:first-child p {
+    background-color: #8e6395;
+}
+main div:nth-child(2) p {
+    background-color: #39a59c;
+}
+main div:nth-child(3) p {
+    background-color: #344757;
+}
+main div:nth-child(4) p {
+    background-color: #e8741e;
+}

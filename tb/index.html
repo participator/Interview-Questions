@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script>
+        const addCard = (currentElement, name) => {
+            const enteredText = prompt('Enter new card text');
+
+            if (enteredText === '') {
+                alert('No text entered');
+                return;
+            }
+            else if (enteredText === null) return;
+
+            const column = currentElement.parentElement;
+            const columnNumber = parseInt(column.dataset.position);
+            
+            // Create li element with changeColumnButtons
+            const liElement = document.createElement('li');
+            switch (columnNumber) {
+                case 0:
+                    liElement.append(enteredText);
+                    liElement.appendChild(changeColumnButton('>', 1));
+                    break;
+                case 1:
+                case 2:
+                    liElement.appendChild(changeColumnButton('<', -1));
+                    liElement.append(enteredText);
+                    liElement.appendChild(changeColumnButton('>', 1));
+                    break;
+                case 3:
+                    liElement.appendChild(changeColumnButton('<', -1));
+                    liElement.append(enteredText);
+                    break;
+            }
+
+            // Add to ul list
+            column.children[1].appendChild(liElement);
+        };
+        const changeColumnButton = (arrow, moveTo) => {
+            const button = document.createElement('button');
+            button.onclick = function() {changeColumn(this, moveTo)};
+            button.innerText = arrow;
+            return button;
+        }
+        const changeColumn = (currentButtonElement, moveAmt) => {
+            const oldLi = currentButtonElement.parentElement;
+            const oldUl = oldLi.parentElement;
+            const main = oldUl.parentElement.parentElement;
+
+            // Remove child from current list
+            oldUl.removeChild(oldLi);
+
+
+            const oldColumnNumber = parseInt(oldUl.parentElement.dataset.position);
+            const newColumnNumber = oldColumnNumber + moveAmt;
+
+            // Build new li element
+            // Add new changeColumn buttons
+            const liElement = document.createElement('li');
+            
+            // Get text position from old li
+            let childTextNodePosition = 1;
+            if (oldColumnNumber === 0) {
+                childTextNodePosition = 0;
+            }
+
+            switch (newColumnNumber) {
+                case 0:
+                    liElement.appendChild(oldLi.childNodes[childTextNodePosition]);
+                    liElement.appendChild(changeColumnButton('>', 1));
+                    break;
+                case 1:
+                case 2:
+                    liElement.appendChild(changeColumnButton('<', -1));
+                    liElement.appendChild(oldLi.childNodes[childTextNodePosition]);
+                    liElement.appendChild(changeColumnButton('>', 1));
+                    break;
+                case 3:
+                    liElement.appendChild(changeColumnButton('<', -1));
+                    liElement.appendChild(oldLi.childNodes[childTextNodePosition]);
+                    break;
+            }
+
+            // Add child to new list
+            const newUl = main.children[newColumnNumber].children[1];
+            newUl.appendChild(liElement);
+        };
+    </script>
+</head>
+<body>
+    <main>
+        <div data-position="0">
+            <p>Winnie</p>
+            <ul>
+                <li data-position='0'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<button onclick="changeColumn(this, 1);">></button></li>
+                <li data-position='1'>Etiam in neque eu lacus commodo placerat.<button onclick="changeColumn(this, 1);">></button></li>
+            </ul>
+            <button onclick="addCard(this, 'Winnie');">Add a card</button>
+        </div>
+        <div data-position="1">
+            <p>Bob</p>
+            <ul>
+                <li data-position='0'><button onclick="changeColumn(this, -1);"><</button>Ut id lacus at quam fringilla ullamcorper.<button onclick="changeColumn(this, 1);">></button></li>
+                <li data-position='1'><button onclick="changeColumn(this, -1);"><</button>In vulputate libero vel vulputate convallis.
+                    <button onclick="changeColumn(this, 1);">></button></li>
+            </ul>
+            <button onclick="addCard(this, 'Bob');">Add a card</button>
+        </div>
+        <div data-position="2">
+            <p>Thomas</p>
+            <ul>
+                <li data-position='0'><button onclick="changeColumn(this, -1);"><</button>Morbi tempus diam eget justo varius, vel congue metus molestie.<button onclick="changeColumn(this, 1);">></button></li>
+                <li data-position='1'><button onclick="changeColumn(this, -1);"><</button>Phasellus sit amet mauris vel eros luctus tincidunt vitae eu ipsum.<button onclick="changeColumn(this, 1);">></button></li>
+            </ul>
+            <button onclick="addCard(this, 'Thomas');">Add a card</button>
+        </div>
+        <div data-position="3">
+            <p>George</p>
+            <ul>
+                <li data-position='0'><button onclick="changeColumn(this, -1);"><</button>Maecenas sed justo cursus, dapibus nunc a, convallis nisl.</li>
+                <li data-position='1'><button onclick="changeColumn(this, -1);"><</button>Etiam sagittis ipsum et aliquet porttitor.</li>
+            </ul>
+            <button onclick="addCard(this, 'George');">Add a card</button>
+        </div>
+    </main>
+</body>
+</html>
