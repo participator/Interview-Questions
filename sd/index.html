@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script defer src="script.js" type="application/javascript"></script>
+    <title>Boxes Go 'Round</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Boxes Go 'Round</h1>
+        </header>
+        <div class="description">
+            <p>Given these three boxes, implement the necessary logic to allow the user to move the red box by
+                clicking on the left/right buttons. Bear in mind that, in the future, more boxes could be added and
+                that doing so should not affect the logic of the solution.</p>
+            <ul>
+                <li>If the red box is in the first position, clicking “Left” should move it to the last position.
+                </li>
+                <li>If the red box is in the last position, clicking “Right” should move it to the first position.
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="box red"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="controls">
+            <button id="left">Left</button>
+            <button id="right">Right</button>
+        </div>
+    </main>
+</body>
+</html>

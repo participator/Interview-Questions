@@ -2,3 +2,6 @@ Tracks various interviews problems I have had and how I went about solving them.
 
 YH Questions
 https://participator.github.io/Interview-Questions/yh/index.html
+
+SD Questions
+https://participator.github.io/Interview-Questions/sd/index.html
