@@ -11,3 +11,7 @@ https://participator.github.io/Interview-Questions/yh/index.html
 
 SD Questions
 https://participator.github.io/Interview-Questions/sd/index.html
+
+AR Questions
+https://participator.github.io/Interview-Questions/ar/a/index.html
+https://participator.github.io/Interview-Questions/ar/b/index.html

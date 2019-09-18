@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="script.js" type="application/javascript"></script>
+    <title>Validate Brackets</title>
+</head>
+<body>
+    <h1>Validate Brackets</h1>
+    <main>
+        <p>Given brackets (, [, or {, return true if they are correctly closed.</p>
+        <div>
+            <h2>Example Cases</h2>
+            <ul>
+                <li>
+                    <p>
+                        Test: <code>([{}])</code>
+                        Expected: <code>true</code>
+                    </p>
+                <li>
+                    <p>
+                        Test: <code>()[]{}</code>
+                        Expected: <code>true</code>
+                    </p>
+                <li>
+                        <p>
+                            Test: <code>([]){}</code>
+                            Expected: <code>true</code>
+                        </p>
+                </li>
+                <li>
+                    <p>
+                        Test: <code>([)]</code>
+                        Expected: <code>false</code>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h2>Possible Solutions</h2>
+            <div>
+                <h3>Using Stack</h3>
+                <p>Idea: Push each opening bracket on the stack.  When a closing bracket is reached, pop an opening bracket off of the stack and check that it matches the closing bracket.</p>
+            </div>
+            <div>
+                <h3>Using Recursion</h3>
+                <p>Idea: Find the first closing bracket, Pass in the first closing bracket and the character at closing bracket minus one.  If this matches, remove this pair from the string and repeat the process.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

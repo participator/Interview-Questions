@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="script.js" type="application/javascript"></script>
+    <title>Linked-List Node Value</title>
+</head>
+
+<body>
+    <h1>One Passed Linked-List Node Value</h1>
+    <main>
+        <p>Write a function that returns the value of the linked-list node when given the linked-list and the count from
+            the right.</p>
+        <div>
+            <p>Linked-list: </p>
+            <ul>
+                <li>3</li>
+                <li>5</li>
+                <li>6</li>
+                <li>2</li>
+                <li>7</li>
+                <li>5</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Example Cases</h2>
+            <ul>
+                <li>
+                    <p>
+                        Test: <code>(list, 3)</code>
+                        Expected: <code>2</code>
+                    </p>
+                <li>
+                    <p>
+                        Test: <code>(list, 1)</code>
+                        Expected: <code>5</code>
+                    </p>
+                <li>
+                    <p>
+                        Test: <code>(list, 0)</code>
+                        Expected: <code>3</code>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h2>Possible Solutions</h2>
+            <div>
+                <h3>Using 2 Passes</h3>
+                <p>Idea: In first pass, count total of linked-list nodes. Subtract the second argument from the total (position).  In the second pass, go to the node that equals position and return list.value.</p>
+            </div>
+            <div>
+                <h3>Using 1 Pass</h3>
+                <p>Idea: Track the count and make another value equal to the second argument (position). Traverse through the linked-list using list.next() and through each iteration update list.next() to list.next().next().</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
