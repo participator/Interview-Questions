@@ -13,5 +13,10 @@ SD Questions <br>
 https://participator.github.io/Interview-Questions/sd/index.html
 
 AR Questions <br>
+**A** <br>
 https://participator.github.io/Interview-Questions/ar/a/index.html <br>
-https://participator.github.io/Interview-Questions/ar/b/index.html
+*Test Cases* <br>
+https://participator.github.io/Interview-Questions/ar/a/test/ index.html <br>
+
+**B** <br>
+https://participator.github.io/Interview-Questions/ar/b/index.html <br>
