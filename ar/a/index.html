@@ -25,10 +25,10 @@
                         Expected: <code>true</code>
                     </p>
                 <li>
-                        <p>
-                            Test: <code>([]){}</code>
-                            Expected: <code>true</code>
-                        </p>
+                    <p>
+                        Test: <code>([]){}</code>
+                        Expected: <code>true</code>
+                    </p>
                 </li>
                 <li>
                     <p>
@@ -42,11 +42,82 @@
             <h2>Possible Solutions</h2>
             <div>
                 <h3>Using Stack</h3>
-                <p>Idea: Push each opening bracket on the stack.  When a closing bracket is reached, pop an opening bracket off of the stack and check that it matches the closing bracket.</p>
+                <p>Idea: Push each opening bracket on the stack. When a closing bracket is reached, pop an opening
+                    bracket off of the stack and check that it matches the closing bracket.</p>
+                <pre>
+                    <code>
+                    function validateUsingStack(input) {
+                        if (input.length === 0 || /^[^\(\)\[\]{}]+$/.test(input)) return true;
+                        
+                        const stack = [];
+                        let result = true;
+                        const closers = ")]}";
+                        const closersToOpenersMap = {
+                            ')': '(',
+                            ']': '[',
+                            '}': '{'
+                        }
+                    
+                        for (var i = 0; i < input.length; i++) {
+                            const character = input[i];
+                    
+                            if (result === false) {
+                                return false;
+                            }
+                            else if (closers.includes(character)) {
+                                result = result && stack.pop() === closersToOpenersMap[character];
+                            }
+                            else {
+                                stack.push(character);
+                            }
+                        }
+                    
+                        return result && stack.length === 0;
+                    }
+                </code>
+            </pre>
             </div>
             <div>
                 <h3>Using Recursion</h3>
-                <p>Idea: Find the first closing bracket, Pass in the first closing bracket and the character at closing bracket minus one.  If this matches, remove this pair from the string and repeat the process.</p>
+                <p>Idea: Find the first closing bracket, Pass in the first closing bracket and the character at closing
+                    bracket minus one. If this matches, remove this pair from the string and repeat the process.</p>
+                <pre>
+                    <code>
+                        function validateUsingRecursion(input) {
+                            if (input.length === 0 || /^[^\(\)\[\]{}]+$/.test(input)) return true;
+                        
+                            const closers = /[\)\]}]/;
+                            const inputMatchIndex = input.match(closers) !== null ? input.match(closers).index : null;
+                        
+                            if (!checkifMatch(input, inputMatchIndex)) return false;
+                        
+                            const newInput = removeMatchingBrackets(input, inputMatchIndex);
+                        
+                            return validateUsingRecursion(newInput);
+                        }
+                        
+                        function checkifMatch(input, closerIndex) {
+                            if (!closerIndex) return false;
+                        
+                            const closer = input[closerIndex];
+                            const opener = input[closerIndex - 1];
+                        
+                            const closersToOpenersMap = {
+                                ')': '(',
+                                ']': '[',
+                                '}': '{'
+                            };
+                        
+                            return opener === closersToOpenersMap[closer];
+                        }
+                        
+                        function removeMatchingBrackets(input, closerIndex) {
+                            const inputArr = input.split('');
+                            inputArr.splice(closerIndex - 1, 2);
+                            return inputArr.join('');
+                        }
+                    </code>
+                </pre>
             </div>
         </div>
     </main>
